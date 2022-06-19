@@ -5,6 +5,8 @@ import com.ddang_.lastscavanger.listeners.player.InteractListener
 import com.ddang_.lastscavanger.listeners.player.JoinQuitListener
 import com.ddang_.lastscavanger.managers.MemberManager
 import org.bukkit.Bukkit
+import org.bukkit.GameRule
+import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.plugin.java.JavaPlugin
@@ -33,16 +35,37 @@ class Lastscavanger : JavaPlugin() {
             private set
     }
 
-    fun memberSet() {
+    private fun memberSet() {
         players.forEach {
             MemberManager.set(it)
         }
     }
 
-    fun memberRemove() {
+    private fun memberRemove() {
         players.forEach {
             MemberManager.remove(it)
         }
+    }
+
+    private fun World.setGameRule() {
+        setGameRule(GameRule.RANDOM_TICK_SPEED, 0)
+        setGameRule(GameRule.NATURAL_REGENERATION, false)
+        setGameRule(GameRule.DO_MOB_SPAWNING, false)
+        setGameRule(GameRule.KEEP_INVENTORY, true)
+        setGameRule(GameRule.DO_WEATHER_CYCLE, false)
+        setGameRule(GameRule.DO_TRADER_SPAWNING, false)
+        setGameRule(GameRule.DO_PATROL_SPAWNING, false)
+        setGameRule(GameRule.DO_MOB_LOOT, false)
+        setGameRule(GameRule.DO_TILE_DROPS, false)
+        setGameRule(GameRule.DO_LIMITED_CRAFTING, true)
+        setGameRule(GameRule.DO_ENTITY_DROPS, false)
+        setGameRule(GameRule.DO_IMMEDIATE_RESPAWN, true)
+        setGameRule(GameRule.DISABLE_RAIDS, true)
+        setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, true)
+        setGameRule(GameRule.DROWNING_DAMAGE, false)
+        setGameRule(GameRule.FALL_DAMAGE, false)
+        setGameRule(GameRule.FIRE_DAMAGE, false)
+        setGameRule(GameRule.FREEZE_DAMAGE, false)
     }
 
     //이벤트 목록
@@ -62,11 +85,15 @@ class Lastscavanger : JavaPlugin() {
 
         //명령어 등록
 
-        //전체 멤버
+        //온라인 플레이어 멤버 등록
         memberSet()
+
+        //게임룰
+        w.setGameRule()
     }
 
     override fun onDisable() {
+        //온라인 플레이어 멤버 정리
         memberRemove()
     }
 }
