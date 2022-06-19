@@ -11,9 +11,7 @@ plugins {
 
 dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib")
-    compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT")
-    compileOnly ("org.spigotmc:spigot:1.19-R0.1-SNAPSHOT")
-    compileOnly ("moe.caramel:daydream-api:1.18.1-R0.1-SNAPSHOT")
+    compileOnly ("moe.caramel:daydream-api:1.18.2-R0.1-SNAPSHOT")
 }
 
 fun TaskContainer.createJar(name: String, configuration: ShadowJar.() -> Unit) {
@@ -63,6 +61,9 @@ repositories {
     maven {
         name = "papermc-repo"
         url = uri("https://papermc.io/repo/repository/maven-public/")
+    }
+    maven {
+        url = uri("https://repo.caramel.moe/repository/maven-public/")
     }
     maven {
         url = uri("https://repo.citizensnpcs.co/")
