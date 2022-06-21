@@ -1,7 +1,6 @@
 package com.ddang_.lastscavanger.managers
 
 import com.ddang_.lastscavanger.objects.Party
-import org.bukkit.entity.Player
 
 class PartyManager {
     companion object {
