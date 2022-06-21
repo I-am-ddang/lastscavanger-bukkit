@@ -4,6 +4,7 @@ import com.ddang_.lastscavanger.listeners.BasicListener
 import com.ddang_.lastscavanger.listeners.player.InteractListener
 import com.ddang_.lastscavanger.listeners.player.JoinQuitListener
 import com.ddang_.lastscavanger.managers.MemberManager
+import eu.decentsoftware.holograms.api.DHAPI
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
 import org.bukkit.World

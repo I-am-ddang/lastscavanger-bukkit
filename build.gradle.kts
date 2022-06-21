@@ -12,6 +12,7 @@ plugins {
 dependencies {
     implementation ("org.jetbrains.kotlin:kotlin-stdlib")
     compileOnly ("moe.caramel:daydream-api:1.18.2-R0.1-SNAPSHOT")
+    implementation ("com.github.decentsoftware-eu:decentholograms:2.4.2")
 }
 
 fun TaskContainer.createJar(name: String, configuration: ShadowJar.() -> Unit) {
