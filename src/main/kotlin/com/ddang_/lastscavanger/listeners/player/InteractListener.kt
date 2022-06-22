@@ -8,5 +8,6 @@ class InteractListener: Listener {
     @EventHandler
     fun onInteract(e: PlayerInteractEvent) {
         val p = e.player
+        p.sendMessage("${e.clickedBlock?.location}")
     }
 }

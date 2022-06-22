@@ -1,6 +1,7 @@
 package com.ddang_.lastscavanger
 
 import com.ddang_.lastscavanger.listeners.BasicListener
+import com.ddang_.lastscavanger.listeners.inventory.InventoryClickListener
 import com.ddang_.lastscavanger.listeners.player.DamageListener
 import com.ddang_.lastscavanger.listeners.player.InteractListener
 import com.ddang_.lastscavanger.listeners.player.JoinQuitListener
@@ -73,7 +74,7 @@ class Lastscavanger : JavaPlugin() {
     //이벤트 목록
     private val events = arrayOf(
         BasicListener(), InteractListener(), JoinQuitListener(),
-        DamageListener()
+        DamageListener(), InventoryClickListener()
     )
 
     override fun onEnable() {

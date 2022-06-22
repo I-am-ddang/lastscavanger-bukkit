@@ -8,9 +8,12 @@ import io.papermc.paper.event.player.AsyncChatEvent
 import net.kyori.adventure.text.Component
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.entity.FoodLevelChangeEvent
 import org.bukkit.event.entity.ItemSpawnEvent
+import org.bukkit.event.player.PlayerAttemptPickupItemEvent
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 import org.bukkit.event.player.PlayerCommandSendEvent
+import org.bukkit.event.player.PlayerDropItemEvent
 
 class BasicListener: Listener {
     companion object {
@@ -94,5 +97,24 @@ class BasicListener: Listener {
             }
         }
         if (!can) e.isCancelled = true
+    }
+
+    //배고픔
+    @EventHandler
+    fun onFoodLevelChanage(e: FoodLevelChangeEvent) {
+        e.isCancelled = true
+    }
+
+    //아이템 줍기
+    @EventHandler
+    fun onPickUp(e: PlayerAttemptPickupItemEvent) {
+        e.isCancelled = true
+        e.item.remove()
+    }
+
+    //아이템 버리기
+    @EventHandler
+    fun onDrop(e: PlayerDropItemEvent) {
+        e.isCancelled = true
     }
 }

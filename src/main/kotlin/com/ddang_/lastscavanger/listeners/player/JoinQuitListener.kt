@@ -1,5 +1,6 @@
 package com.ddang_.lastscavanger.listeners.player
 
+import com.ddang_.lastscavanger.managers.MemberManager
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.GameMode
 import org.bukkit.event.EventHandler
@@ -22,6 +23,9 @@ class JoinQuitListener: Listener {
         val format = SimpleDateFormat("yyyy:MM:dd HH:mm:ss.SS", Locale.KOREA)
 
         e.joinMessage = "${ChatColor.of("#ccffbf")}   접속 ${p.name} §7// ${format.format(now)}"
+
+        //멤버 추가
+        MemberManager.set(p)
     }
 
     @EventHandler
@@ -33,5 +37,8 @@ class JoinQuitListener: Listener {
         val format = SimpleDateFormat("yyyy:MM:dd HH:mm:ss.SS", Locale.KOREA)
 
         e.quitMessage = "${ChatColor.of("#ffc9bf")}   퇴장 ${p.name} §7// ${format.format(now)}"
+
+        //멤버 삭제
+        MemberManager.remove(p)
     }
 }
